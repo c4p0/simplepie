@@ -20,4 +20,11 @@ function simplepie_init() {
 
 	$lib = elgg_get_plugins_path() . 'simplepie/vendors/simplepie.inc';
 	elgg_register_library('simplepie', $lib);
+
+        // Add group option
+        add_group_tool_option('rss', elgg_echo('simplepie:enablerss'), false);
+        elgg_extend_view('groups/tool_latest', 'simplepie/group_module');
+
+	elgg_register_action('simplepie/group_module', elgg_get_plugins_path() . 'simplepie/actions/simplepie/group_module.php');
 }
+
