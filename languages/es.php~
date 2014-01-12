@@ -1,4 +1,5 @@
 <?php
+
 $spanish = array(
         'simplepie:widget' => 'Enlace RSS',
         'simplepie:description' => 'Agregar un blog externo',
@@ -11,4 +12,11 @@ $spanish = array(
         'simplepie:postedon' => 'Posted on',
         'simplepie:invalid_url' => 'Url invalida, copiela desde la barra del navegador por favor',
 );
+
 add_translation("en", $english);
+
+
+
+
+
+
