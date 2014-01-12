@@ -8,7 +8,7 @@ if (!simplepie_is_url($feed_url)) {
 	forward(REFERER);
 }
 
-if (!$group || !$group->canEdit() || !elgg_instanceof($group, 'group')) {
+if (!elgg_instanceof($group, 'group') || !group->canEdit()) {
 	forward(REFERER);
 }
 $group->feed_url = $feed_url;
