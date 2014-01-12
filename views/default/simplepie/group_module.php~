@@ -52,32 +52,31 @@ if ($feed_url) {
 }
 
 	$feed_link = elgg_view('output/url', array(
-	'href' => $feed->get_permalink(),
-	'text' => $feed->get_title(),
-));
+		'href' => $feed->get_permalink(),
+		'text' => $feed->get_title(),
+	));
 
-// need to center
+	// need to center
 	$content .= "<h2 class=\"simplepie-heading\">$feed_link</h2>";
 	$content .= '<ul class="simplepie-list">';
 	foreach ($feed->get_items(0, $num_items) as $item) {
-	$item_link = elgg_view('output/url', array(
-	'href' => $item->get_permalink(),
-	'text' => $item->get_title(),
-));
+		$item_link = elgg_view('output/url', array(
+			'href' => $item->get_permalink(),
+			'text' => $item->get_title(),
+		));
 
-if ($excerpt) {
-	$text = strip_tags($item->get_description(true), $allowed_tags);
-	$excerpt = elgg_get_excerpt($text);
-}
+		if ($excerpt) {
+			$text = strip_tags($item->get_description(true), $allowed_tags);
+			$excerpt = elgg_get_excerpt($text);
+		}
 
-if ($post_date) {
-	$item_date_label = elgg_echo('simplepie:postedon');
-	$item_date = $item->get_date('j F Y | g:i a');
-	$post_date = "$item_date_label $item_date";
-}
+		if ($post_date) {
+			$item_date_label = elgg_echo('simplepie:postedon');
+			$item_date = $item->get_date('j F Y | g:i a');
+			$post_date = "$item_date_label $item_date";
+		}	
 
-	$content .= <<<HTML
-
+		$content .= <<<HTML
 <li class="mbm elgg-item">
 	<h4 class="mbs">$item_link</h4>
 	<p class="elgg-subtext">$post_date</p>

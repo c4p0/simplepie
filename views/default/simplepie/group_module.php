@@ -90,18 +90,20 @@ HTML;
 elgg_pop_context();
 
 if (!$content) {
-	$content = '<p>' . elgg_echo('simplepie:none') . '</p>';
+        $content = '<p>' . elgg_echo('simplepie:none') . '</p>';
+}
+if ($group->canEdit()) {
+        $edit = elgg_view('output/url', array(
+                'href' => '#simplepie-form',
+                'text' => elgg_echo('edit'),
+                'rel' => 'toggle'
+        ));
+} else {
+        $edit = false;
 }
 
-$edit = elgg_view('output/url', array(
-	'href' => '#simplepie-form',
-	'text' => elgg_echo('edit'),
-	'rel' => 'toggle'
-));
-
 echo elgg_view('groups/profile/module', array(
-	'title' => elgg_echo('RSS Group'),
-	'content' => $content,
-	'all_link' => $edit,
+        'title' => elgg_echo('RSS Group'),
+        'content' => $content,
+        'all_link' => $edit,
 ));
-
