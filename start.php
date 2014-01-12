@@ -25,6 +25,9 @@ function simplepie_init() {
         add_group_tool_option('rss', elgg_echo('simplepie:enablerss'), false);
         elgg_extend_view('groups/tool_latest', 'simplepie/group_module');
 
-	elgg_register_action('simplepie/group_module', elgg_get_plugins_path() . 'simplepie/actions/simplepie/group_module.php');
+	elgg_register_action('simplepie/save_group_feed', elgg_get_plugins_path() . 'simplepie/actions/simplepie/save_group_feed.php');
 }
 
+function simplepie_is_url($url) {
+	return preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $url);
+}
